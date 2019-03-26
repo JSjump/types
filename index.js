@@ -2,6 +2,19 @@
 // let a:number[] = [1,2,3];
 // let b:Array<number> = [1,2,3,4]
 // // console.log(b[1])
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 // let str:string = 'ds';
 // let strt = str;
 // // console.log(strt)
@@ -51,9 +64,28 @@ var Person = /** @class */ (function () {
         this.name = name;
     }
     Person.prototype.display_name = function () {
+        console.log('display_name');
         return "this name is " + this.name;
     };
+    Person.male = 'female';
     return Person;
 }());
-var stu = new Person('慧子');
-console.log(stu.display_name());
+console.log(Person.male);
+// let peop=new Person('ren');  // constructor 为protect. 不能实例化； 可被继承 ，子类
+var Programmer = /** @class */ (function (_super) {
+    __extends(Programmer, _super);
+    function Programmer(name) {
+        return _super.call(this, name) || this;
+    }
+    Programmer.prototype.sub_display_name = function () {
+        console.log(11);
+        return _super.prototype.display_name.call(this);
+    };
+    return Programmer;
+}(Person));
+console.log(Programmer.name);
+console.log(Programmer.male);
+// let pger = new Programmer('huizi')
+// console.log(pger.sub_display_name());
+// let stu = new Person('慧子')
+// console.log(stu.display_name());

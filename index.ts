@@ -59,15 +59,35 @@
  * class constructor (构造函数)  methods(方法)
  */
 class Person {
-    name:string;
+    protected name:string;
     age:number;
-    constructor(name:string){
+    static male:string = 'female';
+    protected constructor(name:string){
      this.name = name;
     }
-    display_name():string {
+    protected display_name():string {
+        console.log('display_name')
         return `this name is ${this.name}`
     }
 }
+console.log(Person.name)
 
-let stu = new Person('慧子')
-console.log(stu.display_name());
+// let peop=new Person('ren');  
+// constructor 为protect. 不能实例化，可创建子类，子类不继承。不可直接在该类的外部通过该类直接使用 protect 的属性。区分与static，static 可通过该类直接使用
+// static 可被子类继承，只能通过类的方式调用！！
+class Programmer extends Person {
+    constructor(name:string){
+        super(name)
+    }
+    sub_display_name(){
+        console.log(11)
+        return super.display_name()
+    }
+    
+}
+console.log(Programmer.name)
+console.log(Programmer.male)
+// let pger = new Programmer('huizi')
+// console.log(pger.sub_display_name());
+// let stu = new Person('慧子')
+// console.log(stu.display_name());
