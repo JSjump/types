@@ -1,18 +1,14 @@
-interface Person {
-    name:string
-}
-interface Student{
-    age:number
-}
-
-interface PerStu extends Person,Student {
-  old:number
-}
-// let st:PerStu = {name:'ds'};
-
-class CperStu implements Person,PerStu{
+// 接口继承类
+class Person {
     name:string;
-    old:number;
     age:number;
+    say():void{};
 }
 
+interface Student extends Person{
+     old:number;
+}
+
+class SuperStudent extends Person implements Student{
+ old:number
+}
