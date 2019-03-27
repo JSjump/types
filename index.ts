@@ -11,7 +11,8 @@ class Student implements IPerson {
 
 
 interface IPay {
-    post():void;
+    name?:string;
+    post?():void;   // ‘？’问号，可选属性
 }
 const do_pay = (o:IPay)=> {
     o.post()
